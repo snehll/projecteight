@@ -89,6 +89,8 @@ export default function DrawerAppBar(props: Props) {
           py: 2,
           border: 0,
           elevation: 0,
+          background: "rgba(255, 255, 255, 0.12)", // semi-transparent white
+          backdropFilter: "blur(10px)", // the real "glass" effect
         }}
         component="nav">
         <Toolbar sx={{ backgroundColor: "transparent" }}>
@@ -106,13 +108,10 @@ export default function DrawerAppBar(props: Props) {
           <Box
             sx={{
               height: "100%",
-              p: { xs: 3, md: 3 }, // inner padding
+              p: { xs: 1, md: 1 }, // inner padding
               borderRadius: 300,
-              background: "rgba(255, 255, 255, 0.12)", // semi-transparent white
-              backdropFilter: "blur(10px)", // the real "glass" effect
-              WebkitBackdropFilter: "blur(16px)", // Safari support
-              //   border: "1px solid rgba(255, 255, 255, 0.2)",
-              boxShadow: "0 8px 32px rgba(0, 0, 0, 0.15)",
+              background: "#f2f2f9",
+            //   boxShadow: "0 8px 32px rgba(0, 0, 0, 0.15)",
               flexDirection: "column",
               justifyContent: "center",
               gap: 40,
@@ -121,7 +120,14 @@ export default function DrawerAppBar(props: Props) {
               display: { xs: "none", sm: "block" },
             }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#74a8f2",fontSize:18,fontWeight:'600', px: 3 }}>
+              <Button
+                key={item}
+                sx={{
+                  color: "#74a8f2",
+                  fontSize: 18,
+                  fontWeight: "600",
+                  px: 3,
+                }}>
                 {item}
               </Button>
             ))}
