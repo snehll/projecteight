@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack, Toolbar, Typography } from "@mui/material";
 import ForwardIcon from "@mui/icons-material/Forward";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
@@ -13,6 +13,7 @@ import DirectionsSubwayIcon from "@mui/icons-material/DirectionsSubway";
 
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import Header from "@/components/header";
 
 export function ComboBox() {
   return (
@@ -215,10 +216,10 @@ export function RowAndColumnSpacing() {
     <Box sx={{ width: "100%" }}>
       <Grid
         container
-        rowSpacing={{ xs: 1, sm: 2, md: 3 }}
-        columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        rowSpacing={{ xs: 3, sm: 2, md: 3 }}
+        columnSpacing={{ xs: 3, sm: 2, md: 3 }}>
         {data.map((item) => (
-          <Grid key={item.id} size={3}>
+          <Grid key={item.id} size={{xs:13,md:6}}>
             <Item>
               <RowCard
                 icon={item.icon}
@@ -235,12 +236,15 @@ export function RowAndColumnSpacing() {
 
 export default function Home() {
   return (
-    <Box>
+    <Box position={"relative"}>
+      <Header />
+
       {/* Hero Section with Background Image */}
       <Box
         sx={{
           bgcolor: "#cfe8fc",
           height: "100vh",
+          width: "100%",
           position: "relative",
           overflow: "hidden",
         }}>
@@ -249,7 +253,7 @@ export default function Home() {
           alt="web"
           src="/one.png"
           fill
-          quality={100}
+          quality={75}
           priority
           style={{
             objectFit: "cover", // or 'contain' depending on your needs
@@ -258,6 +262,7 @@ export default function Home() {
 
         {/* Overlay Content */}
         <Box
+          px={{ xs: 2, md: 8 }}
           sx={{
             position: "relative",
             zIndex: 10,
@@ -266,7 +271,6 @@ export default function Home() {
             flexDirection: "column",
             justifyContent: "center",
             color: "white",
-            px: 10,
             // Optional dark overlay for readability
             "&::before": {
               content: '""',
@@ -280,25 +284,49 @@ export default function Home() {
             },
           }}>
           <Typography
+            display={{ xs: "none", md: "block" }}
             fontFamily={"roboto"}
-            maxWidth={1000}
+            maxWidth={{ md: 1000, xs: "100%" }}
             variant="h1"
-            component="h2"
             gutterBottom
             fontWeight="bold">
             YOUR EUROPE-ASIA FREIGHT BRIDGE <br />— SEAMLESS, DEPENDABLE, NO
             DELAYS
           </Typography>
-          <Typography variant="h6" maxWidth={500}>
+          <Typography
+            display={{ xs: "block", md: "none" }}
+            fontFamily={"roboto"}
+            // maxWidth={{ md: 1000, xs: "100%" }}
+            variant="h4"
+            textAlign={"center"}
+            gutterBottom
+            fontWeight="bold">
+            YOUR EUROPE-ASIA FREIGHT BRIDGE — SEAMLESS, DEPENDABLE, NO DELAYS
+          </Typography>
+          <Typography
+            display={{ xs: "none", md: "block" }}
+            variant="h6"
+            maxWidth={500}>
+            From Poland, we connect manufacturers and industrial buyers across
+            Europe and Asia with clear terms, reliable coordination, and supply
+            chains that simply work.
+          </Typography>
+          <Typography
+            variant="h6"
+            textAlign={"justify"}
+            my={4}
+            maxWidth={500}
+            display={{ xs: "block", md: "none" }}>
             From Poland, we connect manufacturers and industrial buyers across
             Europe and Asia with clear terms, reliable coordination, and supply
             chains that simply work.
           </Typography>
           <Box
+            mt={{ xs: 10, md: 0 }}
             flexDirection={"row"}
             display={"flex"}
-            alignItems={"flex-end"}
-            justifyContent={"flex-end"}>
+            alignItems={{ xs: "center", md: "flex-end" }}
+            justifyContent={{ xs: "center", md: "flex-end" }}>
             <Button
               sx={{
                 height: 80,
@@ -314,10 +342,10 @@ export default function Home() {
           </Box>
         </Box>
       </Box>
-      <Box sx={{ paddingY: 8, paddingX: 8 }}>
+      <Box py={{ xs: 2, md: 8 }} px={{ xs: 2, md: 8 }}>
         <Stack>
           <Box
-            textAlign={"center"}
+            textAlign={{ xs: "left", md: "center" }}
             gap={3}
             display={"flex"}
             flexDirection={"column"}>
@@ -333,11 +361,25 @@ export default function Home() {
                 sx={{ verticalAlign: "middle", ml: 1, color: "#74a8f2" }}
               />
             </Typography>
-            <Typography variant="h3" gutterBottom fontWeight="medium">
+            <Typography
+              display={{ xs: "none", md: "block" }}
+              variant="h3"
+              gutterBottom
+              fontWeight="medium">
               Connecting the world, <br />
               One Shipment at a Time.
             </Typography>
-            <Typography variant="h6" maxWidth={800} margin="auto">
+            <Typography
+              display={{ xs: "block", md: "none" }}
+              variant="h4"
+              gutterBottom
+              fontWeight="medium">
+              Connecting the world, One Shipment at a Time.
+            </Typography>
+            <Typography
+              variant="h6"
+              maxWidth={{ xs: "100%", md: 800 }}
+              margin="auto">
               Based in Poland, our company specializes in international trade
               and distribution of industrial equipment and spare parts. We work
               with trusted manufacturers across Europe, providing full-cycle
@@ -347,7 +389,11 @@ export default function Home() {
               transaction.
             </Typography>
           </Box>
-          <Box height={500} mx={10} my={10}>
+          <Box
+            height={500}
+            mx={10}
+            my={10}
+            display={{ xs: "none", md: "flex" }}>
             <Box sx={{ flexGrow: 1 }}>
               <Grid container spacing={0} height={500}>
                 <Grid size={{ xs: 6, md: 4 }} height={"100%"}>
@@ -363,7 +409,7 @@ export default function Home() {
                       alt="web"
                       src="/two.png"
                       fill
-                      quality={100}
+                      quality={75}
                       priority
                       style={{
                         objectFit: "cover", // or 'contain' depending on your needs
@@ -437,7 +483,7 @@ export default function Home() {
           </Box>
         </Stack>
       </Box>
-      <Box sx={{ paddingY: 8, paddingX: 8 }}>
+      <Box py={{ xs: 2, md: 8 }} px={{ xs: 2, md: 8 }}>
         <Stack>
           <Box gap={3} display={"flex"} flexDirection={"column"}>
             <Typography
@@ -455,6 +501,7 @@ export default function Home() {
             <Typography
               textTransform={"uppercase"}
               variant="h2"
+              fontSize={{ xs: 30, md: 70 }}
               gutterBottom
               fontWeight="medium">
               Comprehensive <br />
@@ -466,7 +513,7 @@ export default function Home() {
           </Box>
         </Stack>
       </Box>
-      <Box sx={{ paddingY: 8, paddingX: 8 }}>
+      <Box py={{ xs: 2, md: 8 }} px={{ xs: 2, md: 8 }}>
         <Stack
           justifyContent={"space-between"}
           direction={{ xs: "column", md: "row" }}>
@@ -479,14 +526,14 @@ export default function Home() {
               alt="web"
               src="/whyone.png"
               fill
-              quality={100}
+              quality={75}
               priority
               style={{
                 objectFit: "cover", // or 'contain' depending on your needs
               }}
             />
           </Box>
-          <Box flex={1} px={6} py={{ xs: 2, md: 10 }}>
+          <Box flex={1} px={{ xs: 2, md: 6 }} py={{ xs: 2, md: 10 }}>
             <Typography
               fontSize={13}
               textTransform={"uppercase"}
@@ -503,6 +550,7 @@ export default function Home() {
             <Typography
               textTransform={"capitalize"}
               variant="h3"
+              fontSize={{xs:30,md:50}}
               gutterBottom
               fontWeight="medium">
               your trusted partner <br />
@@ -511,11 +559,11 @@ export default function Home() {
             <Typography
               textTransform={"lowercase"}
               variant="h6"
-              fontSize={{ xs: 10, md: 20 }}
+              fontSize={{ xs: 16, md: 20 }}
               color="grey"
               gutterBottom
               maxWidth={{ xs: "100%", md: "80%" }}
-              my={{ xs: 4, md: 8 }}
+              my={{ xs: 2, md: 8 }}
               fontWeight="500">
               when you choose us, you&rsquo;re opting for a logistics partner
               dedicated to excellence, reliability, and personalized service.
@@ -556,13 +604,13 @@ export default function Home() {
           </Box>
         </Stack>
       </Box>
-      <Box sx={{ paddingY: 8, paddingX: 8 }}>
+      <Box py={{ xs: 2, md: 8 }} px={{ xs: 2, md: 8 }}>
         <Stack
           justifyContent={"space-between"}
           direction={{ xs: "column", md: "row" }}>
           <Box
             position={"relative"}
-            left={180}
+            left={{xs:0,md:180}}
             sx={{
               height: "100%",
               p: { xs: 3, md: 10 }, // inner padding
@@ -638,6 +686,7 @@ export default function Home() {
           </Box>
 
           <Box
+            display={{xs:'none',md:'flex'}}
             flex={1}
             position={"relative"}
             left={-120}
@@ -647,7 +696,7 @@ export default function Home() {
               alt="web"
               src="/faqfour.png"
               fill
-              quality={100}
+              quality={75}
               priority
               style={{
                 objectFit: "cover", // or 'contain' depending on your needs

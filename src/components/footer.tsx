@@ -1,5 +1,6 @@
 "use client";
 import { Box, Typography } from "@mui/material";
+import LogoBox from "./logobox";
 
 export default function Footer() {
   return (
@@ -17,25 +18,27 @@ export default function Footer() {
       <Box
         display={"flex"}
         flexDirection={{ xs: "column", md: "row" }}
-        // alignItems={"center"}
-        justifyContent={"space-between"}
         width={"100%"}
-        px={{ xs: 4, md: 8 }}
-        py={{ xs: 4, md: 8 }}>
+        py={{ xs: 1, md: 8 }}>
         <Box
-          width={"25%"}
+          width={{ xs: "100%", md: "25%" }}
           gap={{ sx: 2, md: 4 }}
           display={"flex"}
           flexDirection={"column"}>
-          <Box height={80} border={1} width={200}></Box>
+          <LogoBox footer={true} />
         </Box>
-        <Box flex={1} >
+        <Box flex={1}>
           <Box
             flex={1}
-            justifyContent={"flex-end"}
+            justifyContent={{ xs: "flex-start", md: "flex-end" }}
             gap={{ sx: 2, md: 4 }}
+            flexDirection={{ xs: "column", md: "row" }}
             display={"flex"}>
-            <Box px={{ xs: 2, md: 4 }} py={{ xs: 2, md: 2 }}>
+            <Box
+              px={{ xs: 2, md: 4 }}
+              py={{ xs: 2, md: 2 }}
+              borderBottom={{ xs: 1, md: 0 }}
+              borderColor={"gray"}>
               <Typography variant="h5" gutterBottom marginBottom={3}>
                 Pages
               </Typography>
@@ -68,7 +71,11 @@ export default function Footer() {
                 </li>
               </ul>
             </Box>
-            <Box px={{ xs: 2, md: 4 }} py={{ xs: 2, md: 2 }}>
+            <Box
+              px={{ xs: 2, md: 4 }}
+              py={{ xs: 2, md: 2 }}
+              borderBottom={{ xs: 1, md: 0 }}
+              borderColor={"grey"}>
               <Typography variant="h5" gutterBottom marginBottom={3}>
                 Our Services
               </Typography>
